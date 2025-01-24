@@ -1,23 +1,21 @@
-<div class="mx-2 lg:mx-4 wafrn-container">
-  <h3 class="flex-grow-1 m-0 mb-2 text-2xl">Notifications</h3>
-</div>
-
-@for (notification of notificationsToShow; track $index) {
-  <app-single-notification [notification]="notification"></app-single-notification>
-  @if ($index % 19 === 0 && $index > 0) {
+<main>
+  <div class="mx-2 lg:mx-4 wafrn-container">
+    <h3 class="flex-grow-1 m-0 mb-2 text-2xl">Notifications</h3>
+  </div>
+  <ul class="semantic-list">
+    @for (notification of notificationsToShow; track $index) {
+    <li class="semantic-list-item">
+      <app-single-notification [notification]="notification"></app-single-notification>
+    </li>
+    @if ($index % 19 === 0 && $index > 0) {
     <!--This element is the one that says NOTIFICATION LOAD TIME-->
-  }
-}
+    }
+    }
+  </ul>
+  <div class="load-more-notifications-intersector"><app-loader>notifications</app-loader></div>
 
-<div class="load-more-notifications-intersector"><app-loader>notifications</app-loader></div>
-
-<button
-  (mousedown)="reload()"
-  mat-flat-button
-  color="default"
-  aria-label="Refresh"
-  class="refresh-button"
-  style="position: fixed; z-index: 500; top: 1em; right: 0.5em"
->
-  <fa-icon [icon]="reloadIcon" />
-</button>
+  <button (mousedown)="reload()" mat-flat-button color="default" aria-label="Refresh" class="refresh-button"
+    style="position: fixed; z-index: 500; top: 1em; right: 0.5em">
+    <fa-icon [icon]="reloadIcon" />
+  </button>
+</main>

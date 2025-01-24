@@ -22,23 +22,18 @@
     <mat-form-field class="w-full">
       <mat-label>Password</mat-label>
       <input formControlName="password" [type]="showPassword ? 'text' : 'password'" name="password" matInput />
-      <button mat-icon-button matSuffix type="button" (click)="togglePasswordVisibility()">
+      <button [attr.aria-label]="showPassword ? 'Hide password' : 'Show password'" mat-icon-button matSuffix
+        type="button" (click)="togglePasswordVisibility()">
         <fa-icon [icon]="showPassword ? faEyeSlash : faEye"></fa-icon>
       </button>
       <mat-hint>
-        <a routerLink="/recoverPassword" class="font-medium no-underline ml-2 text-right cursor-pointer"
-          >Forgot password? Click here!</a
-        >
+        <a routerLink="/recoverPassword" class="font-medium no-underline ml-2 text-right cursor-pointer">Forgot
+          password? Click here!</a>
       </mat-hint>
     </mat-form-field>
 
-    <button
-      [disabled]="loading || !loginForm.valid"
-      mat-flat-button
-      color="primary"
-      extended
-      class="w-full border-round-md mt-4"
-    >
+    <button [disabled]="loading || !loginForm.valid" mat-flat-button color="primary" extended
+      class="w-full border-round-md mt-4">
       <fa-icon [icon]="faUser"></fa-icon>
       Login
     </button>
